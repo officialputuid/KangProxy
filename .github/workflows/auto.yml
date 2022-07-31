@@ -1,0 +1,71 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: KangProxy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 */6 * * *'
+
+jobs:
+  cron:
+
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: rm -rf ./http && rm -rf ./https && rm -rf ./socks4 && rm -rf ./socks5
+    
+    - name: KangProxy http
+      run: |
+          mkdir http
+          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http.txt
+    
+    - name: KangProxy https
+      run: |
+          mkdir https
+          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https.txt
+
+    - name: KangProxy socks4
+      run: |
+          mkdir socks4
+          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4.txt
+
+    - name: KangProxy socks5
+      run: |
+          mkdir socks5
+          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5.txt
+
+    - name: Import GPG key
+      id: import-gpg
+      uses: crazy-max/ghaction-import-gpg@v4
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
+
+    - name: GPG user IDs
+      run: |
+        echo "fingerprint: ${{ steps.import-gpg.outputs.fingerprint }}"
+        echo "keyid:       ${{ steps.import-gpg.outputs.keyid }}"
+        echo "name:        ${{ steps.import-gpg.outputs.name }}"
+        echo "email:       ${{ steps.import-gpg.outputs.email }}"
+    - name: Commit +sign commit and push changes
+      run: |-
+        git config --global user.email "${{ steps.import-gpg.outputs.email }}"
+        git config --global user.name "${{ steps.import-gpg.outputs.name }}"
+        git add -A
+        timestamp=$(date '+%F %H:%M:%S %Z')
+        git commit -m "KangProxy: Update http,https,socks4,socks5 ${timestamp}" || exit 0
+        git push
