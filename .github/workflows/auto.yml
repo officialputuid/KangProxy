@@ -14,9 +14,7 @@ on:
 
 jobs:
   cron:
-
     runs-on: ubuntu-latest
-    
     defaults:
       run:
         shell: bash
@@ -61,6 +59,7 @@ jobs:
         echo "keyid:       ${{ steps.import-gpg.outputs.keyid }}"
         echo "name:        ${{ steps.import-gpg.outputs.name }}"
         echo "email:       ${{ steps.import-gpg.outputs.email }}"
+
     - name: Commit +sign commit and push changes
       run: |-
         git config --global user.email "${{ steps.import-gpg.outputs.email }}"
