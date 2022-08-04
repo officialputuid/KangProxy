@@ -27,22 +27,26 @@ jobs:
     - name: KangProxy http
       run: |
           mkdir http
-          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http.txt
+          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http-v1.txt
+          curl -sSf "${{ secrets.HTTP_LIST2 }}" > http/http-v2.txt
     
     - name: KangProxy https
       run: |
           mkdir https
-          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https.txt
+          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https-v1.txt
+          curl -sSf "${{ secrets.HTTPS_LIST2 }}" > https/https-v2.txt
 
     - name: KangProxy socks4
       run: |
           mkdir socks4
-          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4-v1.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST2 }}" > socks4/socks4-v2.txt
 
     - name: KangProxy socks5
       run: |
           mkdir socks5
-          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5-v1.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST2 }}" > socks5/socks5-v2.txt
 
     - name: Import GPG key
       id: import-gpg
@@ -65,6 +69,8 @@ jobs:
         git config --global user.email "${{ steps.import-gpg.outputs.email }}"
         git config --global user.name "${{ steps.import-gpg.outputs.name }}"
         git add -A
+        curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
+        chmod u+x .git/hooks/commit-msg
         timestamp=$(date '+%F %H:%M:%S %Z')
-        git commit -m "KangProxy: Update http,https,socks4,socks5 ${timestamp}" || exit 0
+        git commit -m "KangProxy: Update Proxies ${timestamp}" || exit 0
         git push
