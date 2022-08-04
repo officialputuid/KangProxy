@@ -27,26 +27,22 @@ jobs:
     - name: KangProxy http
       run: |
           mkdir http
-          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http-v1.txt
-          curl -sSf "${{ secrets.HTTP_LIST2 }}" > http/http-v2.txt
+          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http.txt
     
     - name: KangProxy https
       run: |
           mkdir https
-          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https-v1.txt
-          curl -sSf "${{ secrets.HTTPS_LIST2 }}" > https/https-v2.txt
+          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https.txt
 
     - name: KangProxy socks4
       run: |
           mkdir socks4
-          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4-v1.txt
-          curl -sSf "${{ secrets.SOCKS4_LIST2 }}" > socks4/socks4-v2.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4.txt
 
     - name: KangProxy socks5
       run: |
           mkdir socks5
-          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5-v1.txt
-          curl -sSf "${{ secrets.SOCKS5_LIST2 }}" > socks5/socks5-v2.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5.txt
 
     - name: Import GPG key
       id: import-gpg

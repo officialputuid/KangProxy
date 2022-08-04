@@ -1,26 +1,25 @@
 ## KangProxy
 Free proxy list (http, https, socks4, socks5) and auto update every 6 hours.
 
+## ProxyChecker
+After free proxy list is updated, it will automatically check/validate the proxy list.
+
+◉ HTTP
 ```bash
-# HTTP
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/http/http-v1.txt" > http-v1.txt
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/http/http-v2.txt" > http-v2.txt
+curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/http/http.txt -o http.txt
 ```
 
+◉ HTTPS
 ```bash
-# HTTPS
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/https/https-v1.txt" > https-v1.txt
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/https/https-v2.txt" > https-v2.txt
+curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/https/https.txt -o https.txt
 ```
 
+◉ SOCKS4
 ```bash
-# SOCKS4
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks4/socks4-v1.txt" > socks4-v1.txt
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks4/socks4-v2.txt" > socks4-v2.txt
+curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks4/socks4.txt -o socks4.txt
 ```
 
+◉ SOCKS5
 ```bash
-# SOCKS5
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5-v1.txt" > socks5-v1.txt
-curl -sSf "https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5-v2.txt" > socks5-v2.txt
+curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5.txt -o socks5.txt
 ```
