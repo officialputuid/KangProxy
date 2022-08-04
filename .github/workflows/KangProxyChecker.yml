@@ -1,0 +1,68 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: KangProxyChecker
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron:  '2 */6 * * *'
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: KangProxy - Checker
+      run: |
+          wget "${{ secrets.PROXY_CHECKER }}"
+          mv download.php?hash=QmQeZi53tsqW75qASBd84HNRsA2Y2wRaTWXYgnDG8SgkjN ProxyCheker.zip
+          unzip ProxyCheker.zip
+          cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > ProxyCheker/proxies.txt
+          cd ProxyCheker
+          python3 -m pip install --upgrade pip wheel
+          pip3 install "setuptools<59"
+          pip3 install -r requirements.txt
+          python3 proxy_check.py
+
+    - name: KangProxy - Cleaning
+      run: |
+          cat ProxyCheker/GoodProxy.txt > ./GoodProxy.txt
+          rm -rf ProxyCheker*
+          echo "Task Done! by officialputuid"
+
+    - name: Import GPG key
+      id: import-gpg
+      uses: crazy-max/ghaction-import-gpg@v4
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git_user_signingkey: true
+        git_commit_gpgsign: true
+
+    - name: GPG user IDs
+      run: |
+        echo "fingerprint: ${{ steps.import-gpg.outputs.fingerprint }}"
+        echo "keyid:       ${{ steps.import-gpg.outputs.keyid }}"
+        echo "name:        ${{ steps.import-gpg.outputs.name }}"
+        echo "email:       ${{ steps.import-gpg.outputs.email }}"
+
+    - name: Commit +sign commit and push changes
+      run: |-
+        git config --global user.email "${{ steps.import-gpg.outputs.email }}"
+        git config --global user.name "${{ steps.import-gpg.outputs.name }}"
+        git add -A
+        curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
+        chmod u+x .git/hooks/commit-msg
+        timestamp=$(date '+%F %H:%M:%S %Z')
+        git commit -m "KangProxy: Update Checker Proxies ${timestamp}" || exit 0
+        git push -f
