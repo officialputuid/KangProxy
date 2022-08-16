@@ -4,22 +4,9 @@ Free proxy list (http, https, socks4, socks5) and auto update every 6 hours.
 ## ProxyChecker
 After free proxy list is updated, it will automatically check/validate the proxy list.
 
-◉ HTTP
-```bash
-curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/http/http.txt -o http.txt
-```
+## Proxy-list
+<tt><b>curl *link -o *.txt</b></tt> <br/>
 
-◉ HTTPS
-```bash
-curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/https/https.txt -o https.txt
-```
-
-◉ SOCKS4
-```bash
-curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks4/socks4.txt -o socks4.txt
-```
-
-◉ SOCKS5
-```bash
-curl https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5.txt -o socks5.txt
-```
+| HTTP | HTTPS | SOCKS4 | SOCKS5 | <b>GoodProxy/Checked*</b> |
+|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+| <tt>https://s.id/1ePqv</tt>| <tt>https://s.id/1ePqT</tt> | <tt>https://s.id/1ePr8</tt> | <tt>https://s.id/1ePre</tt> | <tt>https://s.id/1ePy6</tt> |
