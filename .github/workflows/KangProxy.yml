@@ -10,7 +10,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
   schedule:
-    - cron:  '0 */6 * * *'
+    - cron:  '0 */4 * * *'
 
 jobs:
   cron:
@@ -27,22 +27,38 @@ jobs:
     - name: KangProxy http
       run: |
           mkdir http
-          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http.txt
+          curl -sSf "${{ secrets.HTTP_LIST }}" > http/http-1.txt
+          curl -sSf "${{ secrets.HTTP_LIST2 }}" > http/http-2.txt
+          curl -sSf "${{ secrets.HTTP_LIST3 }}" > http/http-3.txt
+          curl -sSf "${{ secrets.HTTP_LIST4 }}" > http/http-4.txt
+          curl -sSf "${{ secrets.HTTP_LIST5 }}" > http/http-5.txt
     
     - name: KangProxy https
       run: |
           mkdir https
-          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https.txt
+          curl -sSf "${{ secrets.HTTPS_LIST }}" > https/https-1.txt
+          curl -sSf "${{ secrets.HTTPS_LIST2 }}" > https/https-2.txt
+          curl -sSf "${{ secrets.HTTPS_LIST3 }}" > https/https-3.txt
+          curl -sSf "${{ secrets.HTTPS_LIST4 }}" > https/https-4.txt
+          curl -sSf "${{ secrets.HTTPS_LIST5 }}" > https/https-5.txt
 
     - name: KangProxy socks4
       run: |
           mkdir socks4
-          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST }}" > socks4/socks4-1.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST2 }}" > socks4/socks4-2.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST3 }}" > socks4/socks4-3.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST4 }}" > socks4/socks4-4.txt
+          curl -sSf "${{ secrets.SOCKS4_LIST5 }}" > socks4/socks4-5.txt
 
     - name: KangProxy socks5
       run: |
           mkdir socks5
-          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST }}" > socks5/socks5-1.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST2 }}" > socks5/socks5-2.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST3 }}" > socks5/socks5-3.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST4 }}" > socks5/socks5-4.txt
+          curl -sSf "${{ secrets.SOCKS5_LIST5 }}" > socks5/socks5-5.txt
 
     - name: Import GPG key
       id: import-gpg

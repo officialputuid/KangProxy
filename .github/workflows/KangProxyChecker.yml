@@ -10,7 +10,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
   schedule:
-    - cron:  '2 */6 * * *'
+    - cron:  '2 */4 * * *'
 
 jobs:
   cron:
@@ -27,7 +27,7 @@ jobs:
           wget "${{ secrets.PROXY_CHECKER }}"
           mv download.php?hash=QmQeZi53tsqW75qASBd84HNRsA2Y2wRaTWXYgnDG8SgkjN ProxyCheker.zip
           unzip ProxyCheker.zip
-          cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > ProxyCheker/proxies.txt
+          cat http/http-1.txt https/https-1.txt socks4/socks4-1.txt socks5/socks5-1.txt http/http-2.txt https/https-2.txt socks4/socks4-2.txt socks5/socks5-2.txt http/http-3.txt https/https-3.txt socks4/socks4-3.txt socks5/socks5-3.txt http/http-4.txt https/https-4.txt socks4/socks4-4.txt socks5/socks5-4.txt http/http-5.txt https/https-5.txt socks4/socks4-5.txt socks5/socks5-5.txt > ProxyCheker/proxies.txt
           cd ProxyCheker
           python3 -m pip install --upgrade pip wheel
           pip3 install "setuptools<59"
@@ -36,7 +36,7 @@ jobs:
 
     - name: KangProxy - Cleaning
       run: |
-          cat ProxyCheker/GoodProxy.txt > ./GoodProxy.txt
+          cat ProxyCheker/GoodProxy.txt > ./officialputuid/RAW.txt
           rm -rf ProxyCheker*
           echo "Task Done! by officialputuid"
 
@@ -64,5 +64,5 @@ jobs:
         curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
         chmod u+x .git/hooks/commit-msg
         timestamp=$(date '+%F %H:%M:%S %Z')
-        git commit -m "KangProxy: Update Checker Proxies ${timestamp}" || exit 0
+        git commit -m "KangProxy: Validated Proxies ${timestamp}" || exit 0
         git push -f
