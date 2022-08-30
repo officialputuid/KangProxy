@@ -10,7 +10,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
   schedule:
-    - cron:  '0 */4 * * *'
+    - cron:  '0 */5 * * *'
 
 jobs:
   cron:
@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: rm -rf ./http && rm -rf ./https && rm -rf ./socks4 && rm -rf ./socks5
+    - run: rm -rf ./http && rm -rf ./https && rm -rf ./socks4 && rm -rf ./socks5 && rm -rf random
     
     - name: KangProxy http
       run: |
@@ -59,6 +59,11 @@ jobs:
           curl -sSf "${{ secrets.SOCKS5_LIST3 }}" > socks5/socks5-3.txt
           curl -sSf "${{ secrets.SOCKS5_LIST4 }}" > socks5/socks5-4.txt
           curl -sSf "${{ secrets.SOCKS5_LIST5 }}" > socks5/socks5-5.txt
+
+    - name: KangProxy random-proxies
+      run: |
+          mkdir random
+          curl -sSf "${{ secrets.RANDOM_LIST }}" > random/RAW.txt
 
     - name: Import GPG key
       id: import-gpg

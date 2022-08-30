@@ -1,5 +1,5 @@
 ## KangProxy
-Free proxy list (http, https, socks4, socks5) and auto update every 4 hours.
+Free proxy list (http, https, socks4, socks5) and auto update every 5 hours.
 
 ## ProxyChecker
 After free proxy list is updated, it will automatically check/validate the proxy list.
@@ -42,4 +42,9 @@ https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5-2.
 https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5-3.txt
 https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5-4.txt
 https://raw.githubusercontent.com/officialputuid/KangProxy/main/socks5/socks5-5.txt
+```
+
+```bash
+# KangProxy: RANDOM proxy-list!
+https://raw.githubusercontent.com/officialputuid/KangProxy/main/random/RAW.txt
 ```
