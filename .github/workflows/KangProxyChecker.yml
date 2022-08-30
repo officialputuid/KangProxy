@@ -38,6 +38,7 @@ jobs:
       run: |
           cat ProxyCheker/GoodProxy.txt > ./officialputuid/RAW.txt
           rm -rf ProxyCheker*
+          sort officialputuid/RAW.txt | uniq -d
           echo "Task Done! by officialputuid"
 
     - name: Import GPG key
