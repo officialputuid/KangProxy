@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: rm -rf ./http && rm -rf ./https && rm -rf ./socks4 && rm -rf ./socks5 && rm -rf random
+    - run: rm -rf ./http && rm -rf ./https && rm -rf ./socks4 && rm -rf ./socks5
     
     - name: KangProxy http
       run: |
@@ -32,6 +32,8 @@ jobs:
           curl -sSf "${{ secrets.HTTP_LIST3 }}" > http/http-3.txt
           curl -sSf "${{ secrets.HTTP_LIST4 }}" > http/http-4.txt
           curl -sSf "${{ secrets.HTTP_LIST5 }}" > http/http-5.txt
+          cat http/http-1.txt http/http-2.txt http/http-3.txt http/http-4.txt http/http-5.txt > http/http.txt
+          rm -rf http/http-*
     
     - name: KangProxy https
       run: |
@@ -41,6 +43,8 @@ jobs:
           curl -sSf "${{ secrets.HTTPS_LIST3 }}" > https/https-3.txt
           curl -sSf "${{ secrets.HTTPS_LIST4 }}" > https/https-4.txt
           curl -sSf "${{ secrets.HTTPS_LIST5 }}" > https/https-5.txt
+          cat https/https-1.txt https/https-2.txt https/https-3.txt https/https-4.txt https/https-5.txt > https/https.txt
+          rm -rf https/https-*
 
     - name: KangProxy socks4
       run: |
@@ -50,6 +54,8 @@ jobs:
           curl -sSf "${{ secrets.SOCKS4_LIST3 }}" > socks4/socks4-3.txt
           curl -sSf "${{ secrets.SOCKS4_LIST4 }}" > socks4/socks4-4.txt
           curl -sSf "${{ secrets.SOCKS4_LIST5 }}" > socks4/socks4-5.txt
+          cat socks4/socks4-1.txt socks4/socks4-2.txt socks4/socks4-3.txt socks4/socks4-4.txt socks4/socks4-5.txt > socks4/socks4.txt
+          rm -rf socks4/socks4-*
 
     - name: KangProxy socks5
       run: |
@@ -59,11 +65,8 @@ jobs:
           curl -sSf "${{ secrets.SOCKS5_LIST3 }}" > socks5/socks5-3.txt
           curl -sSf "${{ secrets.SOCKS5_LIST4 }}" > socks5/socks5-4.txt
           curl -sSf "${{ secrets.SOCKS5_LIST5 }}" > socks5/socks5-5.txt
-
-    - name: KangProxy random-proxies
-      run: |
-          mkdir random
-          curl -sSf "${{ secrets.RANDOM_LIST }}" > random/RAW.txt
+          cat socks5/socks5-1.txt socks5/socks5-2.txt socks5/socks5-3.txt socks5/socks5-4.txt socks5/socks5-5.txt > socks5/socks5.txt
+          rm -rf socks5/socks5-*
 
     - name: Import GPG key
       id: import-gpg
