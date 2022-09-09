@@ -5,9 +5,7 @@ name: NeProxy
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ NeProxy ]
   workflow_dispatch:
   schedule:
     - cron:  '0 */6 * * *'
@@ -22,7 +20,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: rm -rf RAW*
+    - run: |
+          mkdir old-data
+          cat RAW.txt > old-data/RAW.txt
+          cat RAW-Validated.txt > old-data/RAW-Validated.txt
+          rm -rf RAW*
     
     - name: NeProxy - RAW_PROXY
       run: |
@@ -30,7 +32,7 @@ jobs:
 
     - name: NeProxy - Checker
       run: |
-          wget "${{ secrets.PROXY_CHECKER }}"
+          wget "${{ secrets.PROXY_CHECKER_NEPROXY }}"
           mv download.php?hash=QmcWSuEZDTX65vJtCzVHk6zQCfXfDoYhAKBtmdpZdxJkjx ProxyCheker.zip
           unzip ProxyCheker.zip
           cat RAW.txt > ProxyCheker/proxies.txt
