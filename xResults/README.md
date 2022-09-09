@@ -4,4 +4,4 @@ How to download and save to local file `.txt` ? →
 
 ```bash
 # KangProxy: Validated proxy-list!
-https://raw.githubusercontent.com/officialputuid/KangProxy/main/officialputuid/RAW.txt
+https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/xResults/RAW.txt

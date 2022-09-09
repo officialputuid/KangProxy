@@ -5,9 +5,7 @@ name: KangProxyChecker
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ KangProxy ]
   workflow_dispatch:
   schedule:
     - cron:  '2 */5 * * *'
@@ -36,10 +34,8 @@ jobs:
 
     - name: KangProxy - Cleaning
       run: |
-          cat ProxyCheker/GoodProxy.txt > ./officialputuid/RAW.txt
+          cat ProxyCheker/GoodProxy.txt > ./xResults/RAW.txt
           rm -rf ProxyCheker*
-          sort officialputuid/RAW.txt | uniq -d
-          echo "Task Done! by officialputuid"
 
     - name: Import GPG key
       id: import-gpg
