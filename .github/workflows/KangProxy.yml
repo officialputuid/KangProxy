@@ -21,6 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
+          rm -rf xResults/old-data
           mkdir xResults/old-data
           cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > xResults/old-data/Proxies.txt
           cat xResults/RAW.txt > xResults/old-data/RAW.txt
