@@ -21,6 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
+          rm -rf old-data
           mkdir old-data
           cat RAW.txt > old-data/RAW.txt
           cat RAW-Validated.txt > old-data/RAW-Validated.txt
