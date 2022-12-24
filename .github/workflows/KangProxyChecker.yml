@@ -23,7 +23,6 @@ jobs:
     - name: KangProxy - Checker
       run: |
           wget "${{ secrets.PROXY_CHECKER }}"
-          mv download.php?hash=QmQeZi53tsqW75qASBd84HNRsA2Y2wRaTWXYgnDG8SgkjN ProxyCheker.zip
           unzip ProxyCheker.zip
           cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > ProxyCheker/proxies.txt
           cd ProxyCheker
