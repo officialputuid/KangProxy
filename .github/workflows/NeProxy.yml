@@ -34,7 +34,6 @@ jobs:
     - name: NeProxy - Checker
       run: |
           wget "${{ secrets.PROXY_CHECKER_NEPROXY }}"
-          mv download.php?hash=QmcWSuEZDTX65vJtCzVHk6zQCfXfDoYhAKBtmdpZdxJkjx ProxyCheker.zip
           unzip ProxyCheker.zip
           cat RAW.txt > ProxyCheker/proxies.txt
           cd ProxyCheker
