@@ -63,11 +63,6 @@ jobs:
           cat socks5/socks5-1.txt socks5/socks5-2.txt socks5/socks5-3.txt > socks5/socks5.txt
           rm -rf socks5/socks5-*
 
-    - name: KangProxy trigger NeProxy
-      env:
-          GITHUB_TOKEN: ${{ secrets.PRIV_TOKEN }}
-      run: gh workflow run NeProxy.yml --ref NeProxy
-
     - name: Import GPG key
       id: import-gpg
       uses: crazy-max/ghaction-import-gpg@v4
