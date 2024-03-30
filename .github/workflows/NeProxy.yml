@@ -26,7 +26,7 @@ jobs:
           cat RAW.txt > old-data/RAW.txt
           cat RAW-Validated.txt > old-data/RAW-Validated.txt
           rm -rf RAW*
-    
+
     - name: NeProxy - RAW_PROXY
       run: |
           curl -sSf "${{ secrets.RAW_1 }}" > RAW_1.txt
@@ -53,6 +53,8 @@ jobs:
     - name: NeProxy - Cleaning
       run: |
           cat ProxyCheker/GoodProxy.txt > RAW-Validated.txt
+          grep -v '^$' RAW-Validated.txt > fix_RAW.txt && mv fix_RAW* RAW-Validated.txt
+          . clean.sh && mv NewRawValidated* RAW-Validated.txt
           rm -rf ProxyCheker*
 
     - name: Import GPG key
