@@ -1,5 +1,5 @@
 ## NeProxy
-Auto Update & Validated Proxy every 6 hours.
+Auto Update & Validated Proxy every 4 hours.
 
 ## Proxy-list
 How to download and save to local file `.txt` ? →
