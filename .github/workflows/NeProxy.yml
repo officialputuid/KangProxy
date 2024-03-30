@@ -34,7 +34,7 @@ jobs:
           curl -sSf "${{ secrets.RAW_3 }}" > RAW_3.txt
           curl -sSf "${{ secrets.RAW_4 }}" > RAW_4.txt
           curl -sSf "${{ secrets.RAW_5 }}" > RAW_5.txt
-          cat RAW_1 RAW_2 RAW_3 RAW_4 RAW_5 > RAW.txt
+          cat RAW_1.txt RAW_2.txt RAW_3.txt RAW_4.txt RAW_5.txt > RAW.txt
           rm -rf RAW_*
 
     - name: NeProxy - Checker
