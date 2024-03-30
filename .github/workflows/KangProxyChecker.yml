@@ -8,7 +8,7 @@ on:
     branches: [ KangProxy ]
   workflow_dispatch:
   schedule:
-    - cron:  '2 */5 * * *'
+    - cron:  '5 */4 * * *'
 
 jobs:
   cron:
@@ -35,6 +35,9 @@ jobs:
       run: |
           cat ProxyCheker/GoodProxy.txt > ./xResults/RAW.txt
           rm -rf ProxyCheker*
+          cd xResults
+          grep -v '^$' RAW.txt > fix_RAW.txt && mv fix_RAW* RAW.txt
+          . clean.sh && mv new_RAW* RAW.txt
 
     - name: Import GPG key
       id: import-gpg
