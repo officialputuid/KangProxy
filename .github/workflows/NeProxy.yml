@@ -29,7 +29,13 @@ jobs:
     
     - name: NeProxy - RAW_PROXY
       run: |
-          curl -sSf "${{ secrets.RAW_PROXY }}" > RAW.txt
+          curl -sSf "${{ secrets.RAW_1 }}" > RAW_1.txt
+          curl -sSf "${{ secrets.RAW_2 }}" > RAW_2.txt
+          curl -sSf "${{ secrets.RAW_3 }}" > RAW_3.txt
+          curl -sSf "${{ secrets.RAW_4 }}" > RAW_4.txt
+          curl -sSf "${{ secrets.RAW_5 }}" > RAW_5.txt
+          cat RAW_1 RAW_2 RAW_3 RAW_4 RAW_5 > RAW.txt
+          rm -rf RAW_*
 
     - name: NeProxy - Checker
       run: |
