@@ -1,5 +1,4 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# Copyright (C) 2024 officialputuid
 
 name: KangProxy
 
@@ -68,6 +67,9 @@ jobs:
           cat socks5/socks5-1.txt socks5/socks5-2.txt socks5/socks5-3.txt > socks5/socks5.txt
           rm -rf socks5/socks5-*
 
+    - name: Merge all proxy list
+      run: cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > xResults/Proxies.txt
+
     - name: Import GPG key
       id: import-gpg
       uses: crazy-max/ghaction-import-gpg@v4
@@ -91,6 +93,6 @@ jobs:
         git add -A
         curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
         chmod u+x .git/hooks/commit-msg
-        timestamp=$(date '+%F %H:%M:%S %Z')
+        timestamp=$(TZ='Asia/Makassar' date '+%F %H:%M:%S %Z')
         git commit -m "KangProxy: Update Proxies ${timestamp}" || exit 0
         git push
