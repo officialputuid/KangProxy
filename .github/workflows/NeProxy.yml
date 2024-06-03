@@ -80,6 +80,6 @@ jobs:
         git add -A
         curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
         chmod u+x .git/hooks/commit-msg
-        timestamp=$(date '+%F %H:%M:%S %Z')
+        timestamp=$(TZ='Asia/Makassar' date '+%d-%m-%Y %H:%M:%S %Z')
         git commit -m "NeProxy: Updates ${timestamp}" || exit 0
         git push
