@@ -3,14 +3,10 @@
 name: KangProxyChecker
 
 on:
-  push:
-    branches: [ KangProxy ]
   workflow_dispatch:
-  schedule:
-    - cron:  '5 */4 * * *'
 
 jobs:
-  cron:
+  KangProxyChecker:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -61,6 +57,6 @@ jobs:
         git add -A
         curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
         chmod u+x .git/hooks/commit-msg
-        timestamp=$(TZ='Asia/Makassar' date '+%d-%m-%Y %H:%M:%S %Z')
-        git commit -m "KangProxy: Validated Proxies ${timestamp}" || exit 0
+        timestamp=$(TZ='Asia/Makassar' date '+%d/%m/%y %H:%M %Z')
+        git commit -m "KangProxy: Validated Proxies ${timestamp} ✅" || exit 0
         git push -f

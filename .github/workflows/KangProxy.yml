@@ -10,7 +10,7 @@ on:
     - cron:  '0 */4 * * *'
 
 jobs:
-  cron:
+  KangProxy:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -29,7 +29,9 @@ jobs:
     - name: KangProxy trigger NeProxy
       env:
           GITHUB_TOKEN: ${{ secrets.PRIV_TOKEN }}
-      run: gh workflow run NeProxy.yml --ref NeProxy
+      run: |
+          gh workflow run NeProxy.yml --ref NeProxy
+          gh workflow run KangProxyChecker.yml
 
     - name: KangProxy http
       run: |
@@ -93,6 +95,6 @@ jobs:
         git add -A
         curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
         chmod u+x .git/hooks/commit-msg
-        timestamp=$(TZ='Asia/Makassar' date '+%d-%m-%Y %H:%M:%S %Z')
-        git commit -m "KangProxy: Update Proxies ${timestamp}" || exit 0
+        timestamp=$(TZ='Asia/Makassar' date '+%d/%m/%y %H:%M %Z')
+        git commit -m "KangProxy: Update Proxies ${timestamp} ⬆️" || exit 0
         git push
