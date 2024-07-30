@@ -54,7 +54,7 @@ jobs:
       run: |-
         git config --global user.email "${{ steps.import-gpg.outputs.email }}"
         git config --global user.name "${{ steps.import-gpg.outputs.name }}"
-        git add -A
+        git add .
         curl -Lo .git/hooks/commit-msg "${{ secrets.COMMIT_MSG }}"
         chmod u+x .git/hooks/commit-msg
         timestamp=$(TZ='Asia/Makassar' date '+%d/%m/%y %H:%M %Z')
