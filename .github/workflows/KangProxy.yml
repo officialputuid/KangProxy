@@ -26,13 +26,6 @@ jobs:
           cat xResults/RAW.txt > xResults/old-data/RAW.txt
           rm -rf ./http && rm -rf ./https && rm -rf ./socks4 && rm -rf ./socks5
 
-    - name: KangProxy trigger NeProxy
-      env:
-          GITHUB_TOKEN: ${{ secrets.PRIV_TOKEN }}
-      run: |
-          gh workflow run NeProxy.yml --ref NeProxy
-          gh workflow run KangProxyChecker.yml
-
     - name: KangProxy http
       run: |
           mkdir http
@@ -98,3 +91,10 @@ jobs:
         timestamp=$(TZ='Asia/Makassar' date '+%d/%m/%y %H:%M %Z')
         git commit -m "KangProxy: Update Proxies ${timestamp} ⬆️" || exit 0
         git push
+
+    - name: KangProxy trigger NeProxy
+      env:
+          GITHUB_TOKEN: ${{ secrets.PRIV_TOKEN }}
+      run: |
+          gh workflow run NeProxy.yml --ref NeProxy
+          gh workflow run KangProxyChecker.yml
