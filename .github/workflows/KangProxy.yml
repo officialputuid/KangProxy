@@ -97,4 +97,4 @@ jobs:
         chmod u+x .git/hooks/commit-msg
         timestamp=$(TZ='Asia/Makassar' date '+%d/%m/%y %H:%M %Z')
         git commit -m "KangProxy: Update Proxies ${timestamp} ⬆️" || exit 0
-        git push -f
+        git push
