@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# 🌍 ProxyForEveryone
+# 🌍 KangProxy is Back! 🌍
 
 Free proxy lists (HTTP / HTTPS / SOCKS4 / SOCKS5)  
 Updated regularly & ready to use.
@@ -16,12 +16,12 @@ Updated regularly & ready to use.
 
 | PROTOCOL | LINK |
 |----------|------|
-| HTTP | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/http/http.txt` |
-| HTTPS | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/https/https.txt` |
-| SOCKS4 | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/socks4/socks4.txt` |
-| SOCKS5 | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/socks5/socks5.txt` |
-| ALL | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/xResults/Proxies.txt` |
-| TESTED | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/xResults/RAW.txt` |
+| HTTP | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/http/http.txt` |
+| HTTPS | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/https/https.txt` |
+| SOCKS4 | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/socks4/socks4.txt` |
+| SOCKS5 | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/socks5/socks5.txt` |
+| ALL | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/xResults/Proxies.txt` |
+| TESTED | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/xResults/RAW.txt` |
 
 </div>
 
@@ -49,8 +49,8 @@ Invoke-WebRequest -Uri "<RAW_LINK>" -OutFile "proxies.txt"
 
 | INFO                 | LINK                                                                                    |
 | -------------------- | --------------------------------------------------------------------------------------- |
-| Previous  | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/old/all.txt`    |
-| Previous Tested | `https://cdn.jsdelivr.net/gh/officialputuid/ProxyForEveryone@main/old/tested.txt` |
+| Previous  | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/old/all.txt`    |
+| Previous Tested | `https://cdn.jsdelivr.net/gh/officialputuid/KangProxy@main/old/tested.txt` |
 
 </div>
 
@@ -63,8 +63,13 @@ Invoke-WebRequest -Uri "<RAW_LINK>" -OutFile "proxies.txt"
 </div>
 
 ```
-PROTOCOL:IP:PORT or IP:PORT
+PROTOCOL:IP:PORT
 ```
+
+```
+IP:PORT
+```
+
 
 ---
 
